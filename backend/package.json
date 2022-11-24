@@ -18,6 +18,11 @@
     "nodemon": "^2.0.20"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.10.15",
+    "@mui/material": "^5.10.15",
+    "@mui/styled-engine-sc": "^5.10.14",
     "bcrypt": "^5.1.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -28,6 +33,7 @@
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.25.8",
     "sequelize-cli": "^6.5.2",
-    "session-file-store": "^1.5.0"
+    "session-file-store": "^1.5.0",
+    "styled-components": "^5.3.6"
   }
 }

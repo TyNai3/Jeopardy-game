@@ -12,6 +12,7 @@ function App(): JSX.Element {
     api.loadQuestions().then((data) => dispatch({ type: 'INIT', payload: data }));
   }, []);
   return (
+
     <Routes>
     <Route path="/" element={ <Appbar />}>
       <Route path="main" element={<MainPage />} />
@@ -21,5 +22,5 @@ function App(): JSX.Element {
   </Routes>
   );
 }
-
+// ghg
 export default App;
