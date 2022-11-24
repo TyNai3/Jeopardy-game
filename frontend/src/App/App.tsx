@@ -1,3 +1,4 @@
+import Appbar from '../Appbar/Appbar';
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Provider, useDispatch } from 'react-redux';
@@ -12,7 +13,7 @@ function App(): JSX.Element {
   }, []);
   return (
     <Routes>
-    <Route path="/" element={<Header />}>
+    <Route path="/" element={ <Appbar />}>
       <Route path="main" element={<MainPage />} />
       <Route path="cards" element={<QuestionList />} />
       <Route path="auth/:name" element={<Auth />} />
