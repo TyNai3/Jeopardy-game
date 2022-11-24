@@ -1,4 +1,4 @@
-export default interface Card {
+export default interface Question {
   id: number;
   name: string;
   answer: string;
