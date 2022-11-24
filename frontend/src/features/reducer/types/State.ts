@@ -1,5 +1,8 @@
-// import Card from "../../CardList/types/Card";
+import Question from "../../QuestionList/types/Question";
+import Topic from "../../QuestionList/types/Topic";
 
-// export default interface State {
-// ad:Card[]
-//  }
+
+export default interface State {
+questions:Question[];
+topics: Topic[]
+ }
