@@ -1,7 +1,4 @@
+// type Action =
+//  | { type: 'INIT'; payload: Question[] }
 
-
-type Action =
- | { type: 'INIT'; payload: Question[] }
-
-
-export default Action;
+// export default Action;
