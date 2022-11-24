@@ -1,9 +1,13 @@
 const router = require('express').Router();
-const { Question } = require('../db/models');
+const { Question, Topic } = require('../db/models');
 
-router.get('/', async (req, res) => {
+router.get('/questions', async (req, res) => {
   const cards = await Question.findAll();
   res.json(cards);
+});
+router.get('/topics', async (req, res) => {
+  const topics = await Topic.findAll();
+  res.json(topics);
 });
 
 module.exports = router;

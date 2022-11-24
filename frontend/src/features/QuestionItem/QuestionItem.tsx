@@ -2,7 +2,7 @@ import React from "react";
 import Question from '../QuestionList/types/Question'
 import Box from '@mui/material/Box';
 
-function QuestionItem({ card }: { card: Question }): JSX.Element {
+function QuestionItem({ question }: { question: Question }): JSX.Element {
   return (
     <Box
       sx={{
@@ -15,7 +15,7 @@ function QuestionItem({ card }: { card: Question }): JSX.Element {
         },
       }}
     >
-      <h1>{card.count}</h1>
+      <h1>{question.count}</h1>
     </Box>
   )
 }
