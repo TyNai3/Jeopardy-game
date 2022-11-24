@@ -5,12 +5,12 @@ function QuestionList(): JSX.Element {
 
 
   return (
-    <div className="cards__container">
-      <ul className="cards__list">
+    <div className="cards__container">1
+      {/* <ul className="cards__list">
         {ad.map((card) => (
           <QuestionItem key={card.id} card={card} />
         ))}
-      </ul>
+      </ul> */}
     </div>
   )
 }

@@ -19,7 +19,7 @@ router.post('/registration', async (req, res) => {
         const hashPassword = await bcrypt.hash(password, 10);
         const newUser = await User.create({ name, email, password: hashPassword });
         req.session.user_id = newUser.id;
-        res.status(200).json({ message: 'Пользователь зарегистрирован' });
+        res.status(200).json({ message: 'Пользователь зарегистрирован', user: newUser });
       } else {
         res.json({ status: 'error', message: 'Пароли не совпадают' });
       }

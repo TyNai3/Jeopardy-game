@@ -17,9 +17,9 @@ function App(): JSX.Element {
     <Routes>
     <Route path="/" element={<Appbar />}>
       <Route path="/registration" element={<FormRega />} />
-      <Route path="main" element={<MainPage />} />
+      {/* <Route path="main" element={<MainPage />} /> */}
       <Route path="cards" element={<QuestionList />} />
-      <Route path="auth/:name" element={<Auth />} />
+      {/* <Route path="auth/:name" element={<Auth />} /> */}
     </Route>
     </Routes>
   );
