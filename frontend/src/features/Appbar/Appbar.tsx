@@ -6,9 +6,19 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import * as api from '../../App/api';
+import { Response } from '../Rega/types/UserState';
 
 export default function ButtonAppBar():JSX.Element {
+  const dispatch = useDispatch();
+
+  function handleLogout():void {
+    console.log(1)
+api.logout().then((res: Response) => res.message === 'Session destroy' && dispatch({ type: 'LOGOUT' }));
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -27,10 +37,11 @@ export default function ButtonAppBar():JSX.Element {
           </Typography>
           {true && <Button color="inherit">Login</Button>}
           {true && <Button color="inherit">Register</Button>}
-          {false && <Button color="inherit">Log out</Button>}
+          {/* {true && <Button  color="inherit">Log out</Button>} */}
+          <button type="button" onClick={handleLogout}>hjfv</button>
         </Toolbar>
       </AppBar>
-      <Outlet/>
+      <Outlet />
     </Box>
   );
 }

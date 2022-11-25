@@ -1,22 +1,22 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import QuestionItem from "../QuestionItem/QuestionItem";
-import { RootState } from "../reducer/store";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import QuestionItem from '../QuestionItem/QuestionItem';
+import { RootState } from '../reducer/store';
 
 function QuestionList(): JSX.Element {
-  const { questions } = useSelector((state: RootState) => state.questionsState);
-  const { topics } = useSelector((state: RootState) => state.topicsState);
+  const { questions, topics } = useSelector((state: RootState) => state.questionsState);
+
   // console.log(questions, topics)
 
   return (
     <div className="cards__container">
-      {topics.map((topic) => {
-        return <>
+      {topics.map((topic) => (
+<>
           <h1>{topic.title}</h1>
           <div>{questions.map((question) => <QuestionItem key={question.id} question={question} />)}</div>
-        </>
-      })}
+</>
+))}
     </div>
-  )
+  );
 }
-export default QuestionList
+export default QuestionList;
