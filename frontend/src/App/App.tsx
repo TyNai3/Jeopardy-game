@@ -12,6 +12,9 @@ function App(): JSX.Element {
   const dispatch = useDispatch();
   useEffect(() => {
     api.loadQuestions().then((data) => dispatch({ type: 'INIT_QUESTIONS', payload: data }));
+  }, []);
+
+  useEffect(() => {
     api.loadTopics().then((data) => dispatch({ type: 'INIT_TOPICS', payload: data }));
   }, []);
   return (

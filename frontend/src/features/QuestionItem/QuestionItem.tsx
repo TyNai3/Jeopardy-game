@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Question from '../QuestionList/types/Question'
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -10,44 +9,54 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useDispatch } from 'react-redux';
 // import useSound from 'use-sound';
+
+import Question from '../QuestionList/types/Question';
+
 // import game from '../QuestionItem/sound/svoya_igra-30-sec.mp3'
 
 function QuestionItem({ question }: { question: Question }): JSX.Element {
   const [open, setOpen] = useState(false);
   const [answer, setAnswer] = useState('');
   const [score, setScore] = useState(0);
-  const [display, setDisplay] = useState(1)
+  const [display, setDisplay] = useState(1);
   const dispatch = useDispatch();
   // const [play,{stop}] = useSound(game);
   const [timer, setTimer] = useState(30);
 
+// dispatch({ type: 'SCORE_UPDATE', payload: score });
 
-  const handleClickOpen = () => {
+  const handleClickOpen = ():void => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = ():void => {
     setOpen(false);
   };
 
-  const handleAnswer = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    console.log(e.target.value)
-    setAnswer(e.target.value)
-  }
+  const handleAnswer = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>):void => {
+    console.log(e.target.value);
+    setAnswer(e.target.value);
+  };
   const checkAnswer = () => {
     if (answer.toLowerCase() === question.answer.toLowerCase()) {
-      setScore((score) => score + question.count)
+      // console.log(question.count);
+      // setScore(question.count);
+      dispatch({ type: 'SCORE_UPDATE_PLUS', payload: question.count });
     } else {
-      setScore((score) => score - question.count)
+      // console.log(question.count);
+      // setScore(-question.count);
+      dispatch({ type: 'SCORE_UPDATE_MINUS', payload: question.count });
+      // console.log('===>', score);
     }
-    setDisplay(0)
-    handleClose()
-  }
+    // console.log('===>', score);
 
+    setDisplay(0);
+    handleClose();
+  };
 
   return (
     <div>
-      <Button style={{opacity:display}} variant="outlined" onClick={handleClickOpen} >
+      <Button style={{ opacity: display }} variant="outlined" onClick={handleClickOpen}>
         <Box
           sx={{
             width: 300,
@@ -59,7 +68,7 @@ function QuestionItem({ question }: { question: Question }): JSX.Element {
             },
           }}
         >
-          <h1 style={{color:'black'}}>{question.count}</h1>
+          <h1 style={{ color: 'black' }}>{question.count}</h1>
         </Box>
       </Button>
       <Dialog open={open} onClose={handleClose}>
@@ -67,7 +76,7 @@ function QuestionItem({ question }: { question: Question }): JSX.Element {
           <DialogContentText>
             <h1>{question.name}</h1>
           </DialogContentText>
-          
+
           <TextField
             autoFocus
             margin="dense"
@@ -86,7 +95,7 @@ function QuestionItem({ question }: { question: Question }): JSX.Element {
         </DialogActions>
       </Dialog>
     </div>
-  
-  )
+
+  );
 }
-export default QuestionItem
+export default QuestionItem;

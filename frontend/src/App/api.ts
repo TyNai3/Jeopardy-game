@@ -4,12 +4,12 @@ import { Response, UserReg } from '../features/Rega/types/UserState';
 import { UserLogin } from '../features/FormLogo/types/UserLogin';
 
 export const loadQuestions = async (): Promise<Question[]> => {
-  const res = await (fetch('http://localhost:4000/cards/questions'));
+  const res = await (fetch('http://localhost:4000/cards/questions', { credentials: 'include', }));
   return res.json();
 };
 
 export const loadTopics = async (): Promise<Topic[]> => {
-  const res = await (fetch('http://localhost:4000/cards/topics'));
+  const res = await (fetch('http://localhost:4000/cards/topics', { credentials: 'include', }));
   return res.json();
 };
 

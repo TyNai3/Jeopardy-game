@@ -8,7 +8,7 @@ export interface Response {
 export interface User {
    id: number
    name: string
-  
+
 }
 export interface State {
    user: {},

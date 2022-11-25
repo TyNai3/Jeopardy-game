@@ -25,6 +25,18 @@ export const userReducer = (
                ...state,
                user: action.payload.user!
             };
+         case 'SCORE_UPDATE_MINUS':
+            console.log(action.payload);
+             return {
+            ...state,
+            score: (state.score - action.payload)
+         };
+         case 'SCORE_UPDATE_PLUS':
+            console.log(action.payload);
+             return {
+            ...state,
+            score: (state.score + action.payload)
+         };
       default: return state;
    }
 };
