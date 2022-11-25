@@ -1,13 +1,11 @@
 import { createStore, combineReducers } from 'redux';
 import { questionsReducer } from './questionReducer';
-import userReducer from '../FormRega/FormRega'
+import {userReducer} from '../Rega/userReducer';
 
 const store = createStore(
   combineReducers({
     questionsState: questionsReducer,
-    topicsState:questionsReducer,
-     userState: userReducer,
-     
+     userState: userReducer
   })
 );
 

@@ -4,9 +4,10 @@ import QuestionItem from "../QuestionItem/QuestionItem";
 import { RootState } from "../reducer/store";
 import './QuestionList.css'
 
+
 function QuestionList(): JSX.Element {
-  const { questions } = useSelector((state: RootState) => state.questionsState);
-  const { topics } = useSelector((state: RootState) => state.topicsState);
+  const { questions, topics } = useSelector((state: RootState) => state.questionsState);
+
   // console.log(questions, topics)
 
   return (
@@ -25,4 +26,4 @@ function QuestionList(): JSX.Element {
 
   )
 }
-export default QuestionList
+export default QuestionList;
