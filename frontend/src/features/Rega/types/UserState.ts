@@ -1,16 +1,15 @@
 export interface Response {
    message: string,
-   user?: User
-
+   user: User
 }
 
 export interface User {
    id: number
    name: string
-   score: number
 }
 export interface State {
-   user: User | unknown
+   user: {},
+   score: number
 }
 
 export interface UserReg {
