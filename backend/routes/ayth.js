@@ -6,6 +6,7 @@ router.post('/registration', async (req, res) => {
   const {
     name, email, password, passwordRepit,
   } = req.body;
+  console.log(name, email, password, passwordRepit);
   try {
     if (password && email && name && passwordRepit) {
       const user = await User.findOne({ where: { email } });
@@ -51,12 +52,16 @@ router.post('/login', async (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
-  req.session.destroy((error) => {
-    if (error) {
-      return res.status(500).json({ message: 'Session delete error' });
-    }
-    res.clearCookie('user_sid').redirect('/');
-  });
+  console.log(1);
+  // req.session.destroy(
+  //   (error) => {
+  //     if (error) {
+  //       return res.status(500).json({ message: 'Session delete error' });
+  //     }
+  //   },
+  //   res.clearCookie('user_sid').json({ message: 'Session destroy' }),
+  // );
+  req.session.destroy(() => res.clearCookie('user_sid').json({ message: 'Session destroy' })) 
 });
-
-module.exports = router
+///grtbgf
+module.exports = router;
