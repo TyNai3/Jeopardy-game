@@ -6,20 +6,24 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import { NavLink, Outlet } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import * as api from '../../App/api';
 import { Response } from '../Rega/types/UserState';
+import { RootState } from '../reducer/store';
 
 export default function ButtonAppBar():JSX.Element {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user } = useSelector((state: RootState) => state.userState);
 
   function handleLogout():void {
-    console.log(1)
 api.logout().then((res: Response) => res.message === 'Session destroy' && dispatch({ type: 'LOGOUT' }));
+navigate('/');
   }
 
   return (
+    
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
@@ -35,9 +39,18 @@ api.logout().then((res: Response) => res.message === 'Session destroy' && dispat
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Jeopardy Game
           </Typography>
-          {true && <Button color="inherit">Login</Button>}
-          {true && <Button color="inherit">Register</Button>}
-          {/* {true && <Button  color="inherit">Log out</Button>} */}
+          {true && (
+<Button><NavLink className="header__item" to="/auth/login">
+                Login
+        </NavLink>
+</Button>
+)}
+          {true && (
+<Button><NavLink className="header__item" to="auth/registration">
+                Registration
+        </NavLink>
+</Button>
+)}
           <button type="button" onClick={handleLogout}>hjfv</button>
         </Toolbar>
       </AppBar>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,13 +12,25 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import * as api from '../../App/api';
 
 const theme = createTheme();
 
-export default function SignIn():JSX.Element {
+export default function FormLogin():JSX.Element {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleSubmit = (event: React.FormEvent):void => {
     event.preventDefault();
+    api.login({ email, password }).then((res) => {
+      if (res.status) {
+        dispatch({ type: 'LOGIN', payload: res });
+        navigate('/');
+      }
+    });
   };
 
   return (
@@ -41,6 +53,9 @@ export default function SignIn():JSX.Element {
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+
               margin="normal"
               required
               fullWidth
@@ -51,6 +66,8 @@ export default function SignIn():JSX.Element {
               autoFocus
             />
             <TextField
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
               margin="normal"
               required
               fullWidth
@@ -80,7 +97,7 @@ export default function SignIn():JSX.Element {
               </Grid>
               <Grid item>
                 <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                  Don't have an account? Sign Up
                 </Link>
               </Grid>
             </Grid>
