@@ -8,7 +8,6 @@ import QuestionList from '../features/QuestionList/QuestionList';
 import Rega from '../features/Rega/Rega';
 
 function App(): JSX.Element {
-  console.log(1)
   const dispatch = useDispatch();
   useEffect(() => {
     api.loadQuestions().then((data) => dispatch({ type: 'INIT_QUESTIONS', payload: data }));
