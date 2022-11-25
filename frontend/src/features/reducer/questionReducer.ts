@@ -15,12 +15,14 @@ export const questionsReducer = (
       return {
         ...state,
         questions: action.payload
-      }
+      };
       case 'INIT_TOPICS':
+        console.log(action.payload);
+
       return {
         ...state,
         topics: action.payload
-      }
+      };
     default: return state;
   }
 };

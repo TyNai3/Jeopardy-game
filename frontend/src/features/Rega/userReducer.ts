@@ -2,7 +2,8 @@ import Action from './types/Action';
 import { State } from './types/UserState';
 
 export const init: State = {
-   user: {}
+   user: {},
+   score: 0
 };
 
 export const userReducer = (
@@ -18,6 +19,18 @@ export const userReducer = (
          return {
             ...state,
             user: {}
+         };
+         case 'SCORE_UPDATE_MINUS':
+            console.log(action.payload);
+             return {
+            ...state,
+            score: (state.score - action.payload)
+         };
+         case 'SCORE_UPDATE_PLUS':
+            console.log(action.payload);
+             return {
+            ...state,
+            score: (state.score + action.payload)
          };
       default: return state;
    }
