@@ -6,7 +6,8 @@ const store = createStore(
   combineReducers({
     questionsState: questionsReducer,
     topicsState:questionsReducer,
-     userState: userReducer
+     userState: userReducer,
+     
   })
 );
 

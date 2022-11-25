@@ -3,7 +3,7 @@ import State from './types/State';
 
 export const init = {
   questions: [],
-  topics: []
+  topics: [],
 };
 // reducer.ts
 export const questionsReducer = (
