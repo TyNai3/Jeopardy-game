@@ -13,13 +13,18 @@ export const userReducer = (
       case 'REGISTRATION':
          return {
             ...state,
-            user: action.payload.user
+            user: action.payload.user!
          };
       case 'LOGOUT':
          return {
             ...state,
             user: {}
          };
+         case 'LOGIN':
+            return {
+               ...state,
+               user: action.payload.user!
+            };
          case 'SCORE_UPDATE_MINUS':
             console.log(action.payload);
              return {

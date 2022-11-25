@@ -1,11 +1,14 @@
 export interface Response {
-   message: string,
-   user: User
+   message?: string,
+   user?: User,
+   status?: boolean
+
 }
 
 export interface User {
    id: number
    name: string
+
 }
 export interface State {
    user: {},

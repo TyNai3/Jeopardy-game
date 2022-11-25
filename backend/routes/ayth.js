@@ -37,14 +37,14 @@ router.post('/login', async (req, res) => {
   try {
     const user = await User.findOne({ where: { email } });
     if (!user) {
-      res.json({ status: 'error', message: 'Такого пользователя нет в системе' });
+      res.json({ status: false, message: 'Такого пользователя нет в системе' });
     }
     const passwordHash = await bcrypt.compare(password, user.password);
     if (!passwordHash) {
-      res.json({ status: 'error', message: 'Неверный логин или пароль' });
+      res.json({ status: false, message: 'Неверный логин или пароль' });
     }
     req.session.user_id = user.id;
-    res.json({ status: true });
+    res.json({ status: true, user });
   } catch (error) {
     res.json({ status: false });
     console.log(error.message);
@@ -52,16 +52,8 @@ router.post('/login', async (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
-  console.log(1);
-  // req.session.destroy(
-  //   (error) => {
-  //     if (error) {
-  //       return res.status(500).json({ message: 'Session delete error' });
-  //     }
-  //   },
-  //   res.clearCookie('user_sid').json({ message: 'Session destroy' }),
-  // );
-  req.session.destroy(() => res.clearCookie('user_sid').json({ message: 'Session destroy' })) 
+ req.session.destroy(() => res.clearCookie('user_sid').json({ message: 'Session destroy' }));
+
 });
-///grtbgf
+
 module.exports = router;

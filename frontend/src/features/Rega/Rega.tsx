@@ -5,8 +5,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -16,19 +14,6 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import * as api from '../../App/api';
 import { Response } from './types/UserState';
-
-// function Copyright(props: any): JSX.Element {
-//   return (
-//     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://mui.com/">
-//         Your Website
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       .
-//     </Typography>
-//   );
-// }
 
 const theme = createTheme();
 
@@ -49,8 +34,8 @@ function Rega(): JSX.Element {
         navigate('/auth/login');
       } else if (res.message === 'Пользователь зарегистрирован') {
         dispatch({ type: 'REGISTRATION', payload: res });
-        navigate('/');
-      } else {
+        navigate('/cards');
+      } else if (res.message) {
         setError(res.message);
       }
     });

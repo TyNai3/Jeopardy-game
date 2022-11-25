@@ -9,7 +9,9 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useDispatch } from 'react-redux';
 // import useSound from 'use-sound';
+
 import Question from '../QuestionList/types/Question';
+
 // import game from '../QuestionItem/sound/svoya_igra-30-sec.mp3'
 
 function QuestionItem({ question }: { question: Question }): JSX.Element {

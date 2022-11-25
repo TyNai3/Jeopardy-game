@@ -6,6 +6,7 @@ import './App.css';
 import * as api from './api';
 import QuestionList from '../features/QuestionList/QuestionList';
 import Rega from '../features/Rega/Rega';
+import FormLogin from '../features/FormLogo/FormLogo'
 
 function App(): JSX.Element {
   const dispatch = useDispatch();
@@ -20,10 +21,10 @@ function App(): JSX.Element {
 
     <Routes>
     <Route path="/" element={<Appbar />}>
-      <Route path="registration" element={<Rega />} />
+      <Route path="auth/registration" element={<Rega />} />
       {/* <Route path="main" element={<MainPage />} /> */}
       <Route path="cards" element={<QuestionList />} />
-      {/* <Route path="auth/:name" element={<Auth />} /> */}
+      <Route path="auth/login" element={<FormLogin />} />
     </Route>
     </Routes>
   );
