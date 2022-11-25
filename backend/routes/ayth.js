@@ -63,5 +63,5 @@ router.get('/logout', (req, res) => {
   // );
   req.session.destroy(() => res.clearCookie('user_sid').json({ message: 'Session destroy' })) 
 });
-
+///grtbgf
 module.exports = router;
