@@ -23,7 +23,7 @@ navigate('/');
   }
 
   return (
-    
+
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
@@ -39,19 +39,19 @@ navigate('/');
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Jeopardy Game
           </Typography>
-          {true && (
+          {!('id' in user) && (
 <Button><NavLink className="header__item" to="/auth/login">
                 Login
         </NavLink>
 </Button>
 )}
-          {true && (
+          {!('id' in user) && (
 <Button><NavLink className="header__item" to="auth/registration">
                 Registration
         </NavLink>
 </Button>
 )}
-          <button type="button" onClick={handleLogout}>hjfv</button>
+          {'id' in user && <button type="button" onClick={handleLogout}>log out</button>}
         </Toolbar>
       </AppBar>
       <Outlet />

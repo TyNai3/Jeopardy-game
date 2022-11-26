@@ -28,7 +28,7 @@ export default function FormLogin():JSX.Element {
     api.login({ email, password }).then((res) => {
       if (res.status) {
         dispatch({ type: 'LOGIN', payload: res });
-        navigate('/');
+        navigate('/cards');
       }
     });
   };
